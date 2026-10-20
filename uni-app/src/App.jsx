@@ -1,7 +1,12 @@
 import "./App.css";
 import StudentCard from "./components/StudentCard.jsx";
+import { useState } from "react";
 import image from './assets/pixellogo.png'
-const etudiants =[
+
+
+
+function app(){
+  const [etudiants, setEtudiants] = useState([
   {  
   nom : 'yousef',
     prenom : ' benrabea',
@@ -22,13 +27,28 @@ const etudiants =[
     ville:"moknine",
     img : image
   }
-];
-
-function app(){
+]);
+function ajouterEtudiant() {
+  const nouvelEtudiant = {
+    nom: 'nouveau',
+    prenom: 'etudiant',
+    email: 'ggg@aa.com',
+    telephone: '55555555',
+    filere: 'glsi2',
+    groupe: 'd',
+    ville: 'mmmmmmm',
+    img: image
+  };
+  setEtudiants([...etudiants, nouvelEtudiant]);
+}
   return(
-    <div className="container">
+  
+    <div className="container">  <div className="action">
+  < button onClick={ajouterEtudiant}>Ajouter un étudiant</button>
+    </div>
       {etudiants.map((etudiant) => (
       <StudentCard 
+      key={etudiant.email}
       prenom={etudiant.prenom}
       nom={etudiant.nom}
       email={etudiant.email}
