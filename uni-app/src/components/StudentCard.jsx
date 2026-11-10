@@ -1,7 +1,8 @@
 import { useState } from "react";
+import "./StudentCard.css";
 
 function StudentCard(props) {
-  const [cordonneesvisibles, setCoordonneesvisibles] = useState(false);
+  const [cordonneesvisibles, setCoordonneesvisibles] = useState(true);
 
   function basculerinformation() {
     setCoordonneesvisibles(!cordonneesvisibles);
@@ -9,7 +10,7 @@ function StudentCard(props) {
 
   return (
     <div>
-      <h1>Fiche d'information</h1>
+      <h3>Fiche d'information</h3>
       <img src={props.img} alt="logo" width={80} height={80} />
       <p>Nom: {props.nom}</p>
       <p>Prénom: {props.prenom}</p>

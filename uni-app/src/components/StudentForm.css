@@ -1,0 +1,21 @@
+.input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+
+}
+.action {
+  gap: 20px;
+  display: flex;
+  content: top;
+  justify-content: center;
+  height: 5vh;
+  width: 100%;
+  padding-top: 10px;
+}

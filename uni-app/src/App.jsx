@@ -1,5 +1,6 @@
 import "./App.css";
 import StudentCard from "./components/StudentCard.jsx";
+import StudentForm from "./components/StudentForm.jsx";
 import { useState } from "react";
 import image from './assets/pixellogo.png';
 
@@ -48,21 +49,42 @@ function App() {
     );
   }
   function modifierEtudiant(email, nouvellesInformations) {
-    const nom =prompt("Entrez les nouvelles nom de l'étudiant:");
-    nouvellesInformations.nom = nom;
+    nouvellesInformations.nom =prompt("Entrez les nouvelles nom de l'étudiant:");
     setEtudiants ((etudiantsActuels) =>
       etudiantsActuels.map((etudiant) =>
         etudiant.email === email ? { ...etudiant, ...nouvellesInformations } : etudiant
       )
     );
   }
+  function addetudiant() {
+    const newe = {};
+    newe.nom =prompt("Entrez les nouvelles nom de l'étudiant:");
+    newe.prenom =prompt("Entrez les nouvelles prenom de l'étudiant:");
+    newe.email =prompt("Entrez les nouvelles email de l'étudiant:");
+    newe.telephone =prompt("Entrez les nouvelles telephone de l'étudiant:");
+    newe.filere =prompt("Entrez les nouvelles filere de l'étudiant:");
+    newe.groupe =prompt("Entrez les nouvelles groupe de l'étudiant:");
+    newe.ville =prompt("Entrez les nouvelles ville de l'étudiant:");
+    setEtudiants((etudiantsActuels) => [...etudiantsActuels, newe]);
+  }
 
   return (
-    <div className="container">
+    <div>
+
       <div className="action">
         <button onClick={ajouterEtudiant}>Ajouter un étudiant</button>
+        <button onClick={addetudiant}>Ajouter etud form</button>  
+        
+
+      </div>
+      <div>
+        <StudentForm 
+        onAddStudent={(nouvelEtudiant) => setEtudiants((etudiantsActuels) => [...etudiantsActuels, nouvelEtudiant])}
+        />
       </div>
 
+    
+    <div className="container">
       {etudiants.map((etudiant) => (
         <StudentCard
           key={etudiant.email}
@@ -79,6 +101,7 @@ function App() {
           
         />
       ))}
+    </div>
     </div>
   );
 }
